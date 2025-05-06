@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>پرداخت هزینه</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #219150;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2 id="message">در حال بارگذاری...</h2>
+    <button onclick="goToPay()">ورود به درگاه پرداخت</button>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name') || '---';
+    const amount = urlParams.get('amount') || '---';
+
+    document.getElementById("message").innerText =
+      `مراجعه‌کننده محترم آزمایشگاه مرکزی پاتوبیولوژی، ${name}، لطفاً جهت پرداخت مبلغ ${amount} تومان به درگاه پرداخت مراجعه فرمایید.`;
+
+    function goToPay() {
+      window.location.href = "https://example.com/payment";
+    }
+  </script>
+</body>
+</html>
