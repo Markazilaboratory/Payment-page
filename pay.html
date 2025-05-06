@@ -1,58 +1,50 @@
+
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <title>پرداخت هزینه</title>
+  <meta charset="UTF-8" />
+  <title>صفحه پرداخت</title>
   <style>
     body {
-      font-family: Tahoma, sans-serif;
-      background-color: #f0f0f0;
+      font-family: sans-serif;
+      direction: rtl;
       text-align: center;
       padding: 50px;
+      background: #f0f0f0;
     }
     .box {
       background: white;
       padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 400px;
+      border-radius: 12px;
+      max-width: 500px;
       margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      line-height: 1.8;
     }
     h2 {
-      color: #2c3e50;
-    }
-    button {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 16px;
-      background-color: #27ae60;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #219150;
+      color: #007b9c;
     }
   </style>
 </head>
 <body>
   <div class="box">
-    <h2 id="message">در حال بارگذاری...</h2>
-    <button onclick="goToPay()">ورود به درگاه پرداخت</button>
+    <h2>آزمایشگاه مرکزی پاتوبیولوژی</h2>
+    <p id="name"></p>
+    <p>
+      از مراجعه شما سپاسگزاریم.<br>
+      لطفاً جهت تکمیل فرآیند دریافت نتیجه آزمایش، مبلغ 
+      <strong id="amount"></strong> تومان را از طریق درگاه امن پرداخت آنلاین واریز فرمایید.
+    </p>
+    <p>در صورت نیاز با پذیرش آزمایشگاه تماس بگیرید.</p>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get('name') || '---';
+    const name = urlParams.get('name') || 'مراجعه‌کننده گرامی';
     const amount = urlParams.get('amount') || '---';
 
-    document.getElementById("message").innerText =
-      `مراجعه‌کننده محترم آزمایشگاه مرکزی پاتوبیولوژی، ${name}، لطفاً جهت پرداخت مبلغ ${amount} تومان به درگاه پرداخت مراجعه فرمایید.`;
-
-    function goToPay() {
-      window.location.href = "https://example.com/payment";
-    }
+    document.getElementById('name').innerText = `آقای ${name}`;
+    document.getElementById('amount').innerText = amount;
   </script>
 </body>
 </html>
