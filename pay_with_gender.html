@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>صفحه پرداخت</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      text-align: center;
+      padding: 50px;
+      background: #f0f0f0;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      line-height: 1.8;
+    }
+    h2 {
+      color: #007b9c;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>آزمایشگاه مرکزی پاتوبیولوژی</h2>
+    <p id="greeting"></p>
+    <p>
+      از مراجعه شما سپاسگزاریم.<br>
+      لطفاً جهت تکمیل فرآیند دریافت نتیجه آزمایش، مبلغ 
+      <strong id="amount"></strong> تومان را از طریق درگاه امن پرداخت آنلاین واریز فرمایید.
+    </p>
+    <p>در صورت نیاز با پذیرش آزمایشگاه تماس بگیرید.</p>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name') || 'مراجعه‌کننده گرامی';
+    const amount = urlParams.get('amount') || '---';
+
+    // تشخیص جنسیت از طریق نام (روش ساده)
+    const gender = name.toLowerCase().includes('خانم') ? 'خانم' : 
+                   (name.toLowerCase().includes('آقا') ? 'آقای' : 'مراجعه‌کننده');
+
+    document.getElementById('greeting').innerText = `${gender} ${name}`;
+    document.getElementById('amount').innerText = amount;
+  </script>
+</body>
+</html>
